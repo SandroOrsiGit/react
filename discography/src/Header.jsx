@@ -1,9 +1,9 @@
-function Header({band}){
-    return(
-        <div>
-            <h1>{band.name}</h1>
-            <p>{band.intro}</p>
-        </div>
-    )
+function Header({ band }) {
+	return (
+		<div className="header">
+			<h1>{band.name}</h1>
+			<p className="text-center">{band.intro}</p>
+		</div>
+	);
 }
-export default Header
+export default Header;
