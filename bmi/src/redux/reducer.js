@@ -1,4 +1,3 @@
-import Weight from "../Weight";
 import { SET_LENGTH, ADD_WEIGHT, REMOVE_WEIGHT } from "./actions";
 
 let initialState = { length: 0, weights: [] };
