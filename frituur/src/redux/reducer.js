@@ -9,7 +9,12 @@ export default function (state = initialState, action) {
 		case ADD_TO_CART:
 			return {
 				...state,
-				cart: [...state.cart, { snack: action.snack, count: action.count }],
+				cart: [
+					...state.cart,
+					{ snack: action.snack, count: action.count, price: action.price },
+				],
 			};
+		default:
+			return state;
 	}
 }

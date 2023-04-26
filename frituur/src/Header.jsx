@@ -1,3 +1,6 @@
+import { NavLink } from "react-router-dom";
+import Cart from "./Cart";
+
 export default function Header() {
 	const headerStyle = {
 		display: "flex",
@@ -14,9 +17,9 @@ export default function Header() {
 	return (
 		<div style={headerStyle}>
 			<h1>Frituur</h1>
-			<a href="#">Ons Menu</a>
-			<a href="#">Over onze frituur</a>
-			<button>Winkelwagen (?)</button>
+			<NavLink to={"/"}>Ons Menu</NavLink>
+			<NavLink to={"/about"}>Over onze frituur</NavLink>
+			<Cart />
 		</div>
 	);
 }
