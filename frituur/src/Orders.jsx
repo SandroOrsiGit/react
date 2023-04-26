@@ -8,26 +8,45 @@ export default function Orders() {
 	};
 
 	const cart = useSelector((state) => state.cart);
+	let totaal = 0;
+	cart.forEach((snack) => {
+		totaal += snack.price * snack.count;
+	});
 	return (
 		<div>
 			<table style={tableStyles}>
-				<th>Naam</th>
-				<th>Aantal</th>
-				<th>Totaal</th>
-				<th></th>
 				{cart.length ? (
 					<>
+						<th>Naam</th>
+						<th>Aantal</th>
+						<th>Totaal</th>
+						<th></th>
 						{cart.map((order, index) => (
 							<Order
 								name={order.snack}
 								key={index}
 								amount={order.count}
 								price={order.price}
+								index={index}
 							/>
 						))}
+						<hr />
+						<tr>
+							<td>
+								<h2>Totaal</h2>
+							</td>
+							<td></td>
+							<td>
+								<h2>€{totaal}</h2>
+							</td>
+							<td></td>
+						</tr>
 					</>
 				) : (
-					<p>U heeft nog geen producten toegevoegd</p>
+					<div>
+						<br />
+						<p>U heeft nog geen producten toegevoegd</p>
+					</div>
 				)}
 			</table>
 		</div>

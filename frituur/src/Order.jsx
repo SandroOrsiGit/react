@@ -1,4 +1,11 @@
-export default function Order({ name, amount, price }) {
+import { removeFromCart } from "./redux/actions";
+import { useDispatch } from "react-redux";
+
+export default function Order({ name, amount, price, index }) {
+	const dispatch = useDispatch();
+	function handleRemove() {
+		dispatch(removeFromCart(index));
+	}
 	return (
 		<tr>
 			<td>{name}</td>
@@ -7,7 +14,7 @@ export default function Order({ name, amount, price }) {
 			</td>
 			<td>€{price * amount}</td>
 			<td>
-				<button>X</button>
+				<button onClick={handleRemove}>X</button>
 			</td>
 		</tr>
 	);
