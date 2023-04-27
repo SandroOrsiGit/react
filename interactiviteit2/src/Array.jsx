@@ -11,7 +11,7 @@ export default function Array(){
             setStudentInput(e.target.value)
         }
         function addStudent(){
-            if(setStudentInput.length>0){
+            if(studentInput.length>0){
             setStudents([...students,studentInput])
             setStudentInput("")
             }
