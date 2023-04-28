@@ -10,10 +10,8 @@ export default function ModalContent({ title, children, onClick }) {
 
 	return (
 		<div style={modalContentStyles}>
-			<ModalContentHeader onClick={onClick} title={title}>
-				{children}
-			</ModalContentHeader>
-			<div>{children}</div>
+			<ModalContentHeader title={title} onClick={onClick} />
+			{children}
 		</div>
 	);
 }

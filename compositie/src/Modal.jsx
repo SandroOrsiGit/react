@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import ModalOverlay from "./ModalOverlay";
 import ModalDialog from "./ModalDialog";
 
 export default function Modal({ title, children }) {
@@ -11,11 +10,11 @@ export default function Modal({ title, children }) {
 		} else {
 			document.body.style.overflowY = "auto";
 		}
-	}, [open]);
+	});
 
 	return (
 		<>
-			<button onClick={() => setOpen(true)}>{open ? "Close" : "Open"}</button>
+			<button onClick={() => setOpen(true)}> {open ? "Close" : "Open"}</button>
 
 			{open == true && (
 				<ModalDialog title={title} onClick={() => setOpen(false)}>

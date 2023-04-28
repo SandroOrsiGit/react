@@ -1,9 +1,8 @@
-export default function ({ color, children }) {
+export default function FancyBorder({ color, children }) {
 	const fancyBorderStyles = {
-		borderWidth: "3px",
+		border: "5px",
 		borderStyle: "solid",
 		borderColor: color,
 	};
-
 	return <div style={fancyBorderStyles}>{children}</div>;
 }

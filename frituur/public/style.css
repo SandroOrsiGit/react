@@ -1,0 +1,16 @@
+.bigButtonStyle {
+	padding: 5px;
+	background-color: blue;
+	color: white;
+}
+
+.bigButtonStyle:hover {
+	cursor: pointer;
+}
+.bigButtonStyle:active {
+	background-color: lightblue !important;
+}
+
+table {
+	border-spacing: 0 15px;
+}

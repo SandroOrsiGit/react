@@ -1,12 +1,12 @@
 import Dialog from "./Dialog";
+
 export default function WelcomeDialog() {
 	return (
-		<Dialog title="Welcome to this website" subtitle="Feel free to like and comment">
+		<Dialog title="Welcome to this site!" subtitle="Feel free to register ans comment">
 			<p>
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius, culpa vitae! Deserunt perspiciatis
-				itaque dolores vel dicta, placeat soluta neque assumenda. Accusamus expedita id voluptatibus?
-				Perspiciatis labore quasi tempore, molestiae pariatur atque quaerat libero natus sapiente eaque dolore
-				consequatur veritatis, ipsum recusandae quisquam eveniet facere, harum quam a doloribus voluptas.
+				Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nulla, porro inventore perferendis suscipit
+				sunt laudantium veritatis adipisci cupiditate qui labore quis, ad pariatur nisi recusandae placeat
+				laborum ducimus voluptate, odit impedit.{" "}
 			</p>
 		</Dialog>
 	);

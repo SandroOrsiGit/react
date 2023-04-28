@@ -8,7 +8,7 @@ export default function ModalDialog({ onClick, title, children }) {
 		bottom: 0,
 		left: 0,
 		right: 0,
-		zIndex: 999,
+		zIndex: 9999,
 		display: "flex",
 		justifyContent: "center",
 		alignItems: "center",
@@ -16,9 +16,7 @@ export default function ModalDialog({ onClick, title, children }) {
 
 	return (
 		<div style={modalDialogStyles}>
-			<ModalOverlay onClick={onClick}></ModalOverlay>
-
-			{/* wit vlak */}
+			<ModalOverlay onClick={onClick} />
 			<ModalContent title={title} onClick={onClick}>
 				{children}
 			</ModalContent>

@@ -5,7 +5,7 @@ export default function ModalOverlay({ onClick }) {
 		bottom: 0,
 		left: 0,
 		right: 0,
-		backgroundColor: "rgba(0,0,0,.80)",
+		backgroundColor: "rgba(0, 0, 0, 0.75)",
 	};
 
 	return <div style={overlayStyles} onClick={onClick}></div>;

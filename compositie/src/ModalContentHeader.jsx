@@ -7,7 +7,7 @@ export default function ModalContentHeader({ onClick, title }) {
 		alignItems: "center",
 		marginLeft: "-1rem",
 		marginRight: "-1rem",
-		marginTop: "-1rem",
+		margintop: "-1rem",
 		padding: "1rem",
 	};
 

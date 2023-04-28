@@ -1,6 +1,6 @@
 import FancyBorder from "./FancyBorder";
 
-export default function ({ color = "red", title, subtitle, children }) {
+export default function Dialog({ color = "pink", title, subtitle, children }) {
 	return (
 		<FancyBorder color={color}>
 			<h1>{title}</h1>
