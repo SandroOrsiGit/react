@@ -1,0 +1,75 @@
+body {
+	margin: 0;
+}
+.tracker {
+	display: flex;
+	justify-content: center;
+}
+.creature {
+}
+.creature img {
+	display: block;
+	object-fit: cover;
+	max-width: 75px;
+	max-height: 75px;
+	margin: auto;
+}
+th {
+	width: 150px;
+	max-width: 150px !important;
+	font-size: 20px;
+}
+td {
+	width: 150px;
+	text-align: center;
+	font-size: 20px;
+}
+table,
+th,
+td {
+	border: 1px solid;
+}
+.header {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+.dropdown {
+	border: solid 1px;
+	display: flex;
+	padding: 0px 10px;
+	margin-top: 10px;
+}
+.dropdown:hover {
+	cursor: pointer;
+}
+.dropdown-monster img {
+	display: block;
+	max-width: 50px;
+	max-height: 50px;
+}
+.dropdown-monster {
+	display: flex;
+	background-color: lightgrey;
+	border: solid 1px;
+
+	height: 5 vh;
+}
+.dropdown-monster:hover {
+	background-color: white;
+	cursor: pointer;
+}
+.dropdown-content {
+	position: absolute;
+	overflow-y: auto;
+	height: 50vh;
+	z-index: 10;
+}
+.add-creature {
+	display: flex;
+	align-items: center;
+}
+.add-creature button {
+	height: 52px;
+	margin-top: 10px;
+}
