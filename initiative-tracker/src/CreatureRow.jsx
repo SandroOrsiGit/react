@@ -1,12 +1,56 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { editCreatureHp, editCreatureInitiative, sortCreatures } from "./redux/actions";
+import { useSelector } from "react-redux";
 
-export default function CreatureRow({ creature }) {
-	const [hp, setHP] = useState(creature.hp);
-	const [initiative, setInitiative] = useState(0);
+export default function CreatureRow({ creature, index }) {
+	const hp = useSelector((state) => state.creatures[index].hp);
+	const initiative = useSelector((state) => state.creatures[index].initiative);
+	let roll = false;
+	const [localHp, setLocalHp] = useState(hp);
+	const [localInitiative, setLocalInitiative] = useState(initiative);
 	const [hpActive, setHPActive] = useState(false);
 	const [initiativeActive, setInitiativeActive] = useState(false);
+	const dispatch = useDispatch();
+	const active = useSelector((state) => state.creatures[index].active);
+
+	function handleSetHP() {
+		dispatch(editCreatureHp(index, localHp));
+		setHPActive(false);
+	}
+	function handleSetInitiative() {
+		dispatch(editCreatureInitiative(index, localInitiative));
+		setInitiativeActive(false);
+	}
+
+	function handleRoll() {
+		let requestdata = {
+			jsonrpc: "2.0",
+			method: "generateIntegers",
+			params: {
+				apiKey: "58b137e9-7fa9-4445-9daa-a1d05edb51a1",
+				n: 1,
+				min: 1,
+				max: 20,
+			},
+			id: 1,
+		};
+		fetch("https://api.random.org/json-rpc/4/invoke", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(requestdata),
+		})
+			.then((res) => res.json())
+			.then((data) => {
+				console.log(data);
+				setLocalInitiative(data.result.random.data[0]);
+				dispatch(editCreatureInitiative(index, data.result.random.data[0]));
+			});
+	}
 	return (
-		<tr className="creature">
+		<tr className="creature" style={{ backgroundColor: active ? "lightgrey" : "white" }}>
 			<td>
 				<img src={creature.img_url} alt={creature.name} />
 			</td>
@@ -16,12 +60,8 @@ export default function CreatureRow({ creature }) {
 			<td>
 				{hpActive ? (
 					<>
-						<input
-							type="text"
-							value={hp}
-							onChange={(e) => setHP(e.target.value)}
-						/>
-						<button onClick={() => setHPActive(false)}>Set</button>
+						<input type="text" value={localHp} onChange={(e) => setLocalHp(e.target.value)} />
+						<button onClick={handleSetHP}>Set</button>
 					</>
 				) : (
 					<p>
@@ -34,15 +74,15 @@ export default function CreatureRow({ creature }) {
 					<>
 						<input
 							type="number"
-							value={initiative}
-							onChange={(e) => setInitiative(e.target.value)}
+							value={localInitiative}
+							onChange={(e) => setLocalInitiative(e.target.value)}
 						/>
-						<button onClick={() => setInitiativeActive(false)}>Set</button>
+						<button onClick={handleSetInitiative}>Set</button>
 					</>
 				) : (
 					<p>
-						{initiative}{" "}
-						<button onClick={() => setInitiativeActive(true)}>Edit</button>
+						{initiative} <button onClick={() => setInitiativeActive(true)}>Edit</button>
+						<button onClick={handleRoll}>Roll</button>
 					</p>
 				)}
 			</td>
