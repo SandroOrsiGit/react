@@ -4,6 +4,9 @@ export const EDIT_CREATURE_INITIATIVE = "EDIT_CREATURE_INITIATIVE";
 export const ROLL_INITIATIVE_ALL = "ROLL_INITIATIVE_ALL";
 export const SORT_CREATURES = "SORT_CREATURES";
 export const TOGGLE_CREATURE_ACTIVE = "TOGGLE_CREATURE_ACTIVE";
+export const REMOVE_CREATURE = "REMOVE_CREATURE";
+export const START = "START";
+export const END = "END";
 
 export function addToTracker(creature, count) {
 	return { type: ADD_TO_TRACKER, creature, count };
@@ -22,4 +25,13 @@ export function sortCreatures() {
 }
 export function toggleCreatureActive(indexToEdit) {
 	return { type: TOGGLE_CREATURE_ACTIVE, indexToEdit };
+}
+export function removeCreature(index) {
+	return { type: REMOVE_CREATURE, index };
+}
+export function start() {
+	return { type: START };
+}
+export function end() {
+	return { type: END };
 }

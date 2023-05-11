@@ -1,6 +1,11 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { editCreatureHp, editCreatureInitiative, sortCreatures } from "./redux/actions";
+import {
+	editCreatureHp,
+	editCreatureInitiative,
+	removeCreature,
+	sortCreatures,
+} from "./redux/actions";
 import { useSelector } from "react-redux";
 
 export default function CreatureRow({ creature, index }) {
@@ -21,6 +26,22 @@ export default function CreatureRow({ creature, index }) {
 	function handleSetInitiative() {
 		dispatch(editCreatureInitiative(index, localInitiative));
 		setInitiativeActive(false);
+	}
+
+	function handleKeyPressEnterInitiative(e) {
+		if (e.key === "Enter") {
+			setLocalInitiative(e.target.value);
+			handleSetInitiative();
+		}
+	}
+	function handleKeyPressHp(e) {
+		if (e.key === "Enter") {
+			setLocalHp(e.target.value);
+			handleSetHP();
+		}
+	}
+	function handleRemove() {
+		dispatch(removeCreature(index));
 	}
 
 	function handleRoll() {
@@ -50,7 +71,10 @@ export default function CreatureRow({ creature, index }) {
 			});
 	}
 	return (
-		<tr className="creature" style={{ backgroundColor: active ? "lightgrey" : "white" }}>
+		<tr
+			className="creature"
+			style={{ backgroundColor: active ? "lightgrey" : "white" }}
+		>
 			<td>
 				<img src={creature.img_url} alt={creature.name} />
 			</td>
@@ -60,7 +84,13 @@ export default function CreatureRow({ creature, index }) {
 			<td>
 				{hpActive ? (
 					<>
-						<input type="text" value={localHp} onChange={(e) => setLocalHp(e.target.value)} />
+						<input
+							type="number"
+							min="0"
+							value={localHp}
+							onChange={(e) => setLocalHp(e.target.value)}
+							onKeyDown={(e) => handleKeyPressHp(e)}
+						/>
 						<button onClick={handleSetHP}>Set</button>
 					</>
 				) : (
@@ -76,15 +106,20 @@ export default function CreatureRow({ creature, index }) {
 							type="number"
 							value={localInitiative}
 							onChange={(e) => setLocalInitiative(e.target.value)}
+							onKeyDown={(e) => handleKeyPressEnterInitiative(e)}
 						/>
 						<button onClick={handleSetInitiative}>Set</button>
 					</>
 				) : (
 					<p>
-						{initiative} <button onClick={() => setInitiativeActive(true)}>Edit</button>
+						{initiative}{" "}
+						<button onClick={() => setInitiativeActive(true)}>Edit</button>
 						<button onClick={handleRoll}>Roll</button>
 					</p>
 				)}
+			</td>
+			<td>
+				<button onClick={handleRemove}>Remove</button>
 			</td>
 		</tr>
 	);

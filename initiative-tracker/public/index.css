@@ -4,6 +4,9 @@ body {
 .flex {
 	display: flex;
 }
+.inline {
+	display: inline-block;
+}
 .tracker {
 	display: flex;
 	justify-content: center;
@@ -59,12 +62,15 @@ td {
 	display: flex;
 	background-color: lightgrey;
 	border: solid 1px;
-
+	width: 200px;
 	height: 5 vh;
 }
 .dropdown-monster:hover {
 	background-color: white;
 	cursor: pointer;
+}
+.dropdown-monster p {
+	margin-left: 10px;
 }
 .dropdown-content {
 	position: absolute;
@@ -128,4 +134,9 @@ td {
 }
 .damage {
 	border-radius: 0 0 10px 10px;
+}
+.small-button {
+	max-height: 25px;
+	display: block;
+	margin-left: 5px;
 }

@@ -5,19 +5,17 @@ import {
 	ROLL_INITIATIVE_ALL,
 	TOGGLE_CREATURE_ACTIVE,
 	SORT_CREATURES,
+	REMOVE_CREATURE,
+	START,
+	END,
 } from "./actions";
 
 let initialState = {
-	creatures: [
-		{
-			name: "Grignr",
-			hp: 35,
-			img_url:
-				"https://preview.redd.it/the-man-too-dumb-to-die-i-present-grignr-grignrson-v0-znv1qtahf3ya1.png?width=1024&format=png&auto=webp&s=4bd3979279597a44a8fb1aa9f3fb1dd0a5758895",
-			initiative: "",
-			active: false,
-		},
-	],
+	creatures: [],
+	creaturesRemoved: [],
+	indexOfLastRemoved: null,
+	creatureAddedInCombat: false,
+	started: false,
 };
 
 export default function (state = initialState, action) {
@@ -29,7 +27,11 @@ export default function (state = initialState, action) {
 			for (let i = 0; i < action.count; i++) {
 				newState = {
 					...newState,
-					creatures: [...newState.creatures, { ...action.creature, initiative: "", active: false }],
+					creatures: [
+						...newState.creatures,
+						{ ...action.creature, initiative: "", active: false },
+					],
+					creatureAddedInCombat: newState.started,
 				};
 			}
 
@@ -86,6 +88,32 @@ export default function (state = initialState, action) {
 						return creature;
 					}
 				}),
+			};
+		case REMOVE_CREATURE:
+			return {
+				...state,
+				creatures: state.creatures.filter((creature, index) => {
+					if (index === action.index) {
+						return;
+					} else {
+						return creature;
+					}
+				}),
+				creaturesRemoved: [
+					...state.creaturesRemoved,
+					state.creatures[action.index],
+				],
+				indexOfLastRemoved: action.index,
+			};
+		case START:
+			return {
+				...state,
+				started: true,
+			};
+		case END:
+			return {
+				...state,
+				started: false,
 			};
 
 		default:

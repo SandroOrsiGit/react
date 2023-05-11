@@ -2,10 +2,11 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addToTracker } from "./redux/actions";
 
-export default function DropdownMonster({ monster, setDropdownActive }) {
+export default function DropdownMonster({ monster, setDropdownActive, saved }) {
 	const [selected, setSelected] = useState(false);
 	const [count, setCount] = useState(1);
 	const dispatch = useDispatch();
+	const [removed, setRemoved] = useState(false);
 	function handleAdd() {
 		if (count > 0) {
 			setDropdownActive(false);
@@ -13,12 +14,27 @@ export default function DropdownMonster({ monster, setDropdownActive }) {
 			dispatch(addToTracker(monster, count));
 		}
 	}
+	function handleRemove(e) {
+		e.stopPropagation();
+		localStorage.removeItem(monster.name);
+		setRemoved(true);
+	}
 	return (
 		<div>
-			<div className="dropdown-monster" onClick={() => setSelected(!selected)}>
-				<img src={monster.img_url} alt={monster.name} />
-				<p>{monster.name}</p>
-			</div>
+			{!removed && (
+				<div
+					className="dropdown-monster"
+					onClick={() => setSelected(!selected)}
+				>
+					<img src={monster.img_url} alt={monster.name} />
+					<p>{monster.name}</p>
+					{saved && (
+						<button onClick={handleRemove} className="small-button">
+							Remove
+						</button>
+					)}
+				</div>
+			)}
 			{selected && (
 				<div>
 					<input

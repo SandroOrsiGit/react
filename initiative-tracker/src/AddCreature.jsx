@@ -9,7 +9,10 @@ export default function AddCreature() {
 	return (
 		<div>
 			<div className="add-creature">
-				<div className="dropdown" onClick={() => setDropdownActive(!dropdownActive)}>
+				<div
+					className="dropdown"
+					onClick={() => setDropdownActive(!dropdownActive)}
+				>
 					<p>--Select Creature To Add--</p>
 					{dropdownActive ? <p>&#x25B2;</p> : <p>&#x25BC;</p>}
 				</div>
@@ -18,7 +21,12 @@ export default function AddCreature() {
 			<div className="dropdown-content">
 				{dropdownActive &&
 					monsters.map((monster, index) => (
-						<DropdownMonster monster={monster} key={index} setDropdownActive={setDropdownActive} />
+						<DropdownMonster
+							monster={monster}
+							key={index}
+							setDropdownActive={setDropdownActive}
+							saved={false}
+						/>
 					))}
 			</div>
 		</div>
