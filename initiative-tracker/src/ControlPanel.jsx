@@ -1,11 +1,5 @@
 import { useDispatch } from "react-redux";
-import {
-	toggleCreatureActive,
-	sortCreatures,
-	editCreatureHp,
-	start,
-	end,
-} from "./redux/actions";
+import { toggleCreatureActive, sortCreatures, editCreatureHp, start, end } from "./redux/actions";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
@@ -21,8 +15,7 @@ export default function ControlPanel() {
 	const [length, setLength] = useState(0);
 	const [counter, setCounter] = useState(0);
 	const [turnCounter, setTurnCounter] = useState(0);
-	const [creatureRemovedOnCurrentIndex, setCreatureRemovedOnCurrentIndex] =
-		useState(false);
+	const [creatureRemovedOnCurrentIndex, setCreatureRemovedOnCurrentIndex] = useState(false);
 	const [currentCreature, setCurrentCreature] = useState(null);
 	const [recentlySorted, setRecentlySorted] = useState(false);
 
@@ -128,7 +121,7 @@ export default function ControlPanel() {
 				</button>
 			</div>
 			<div>
-				<p>Turns passed: {turnCounter}</p>
+				<p className="bloodred">Turns passed: {turnCounter}</p>
 			</div>
 		</div>
 	);

@@ -5,7 +5,9 @@ export default function AddModal() {
 	const [openModal, setOpenModal] = useState(false);
 	return (
 		<div>
-			<button onClick={() => setOpenModal(true)}>Add Custom Monster/Player</button>
+			<button onClick={() => setOpenModal(true)} className="custom-button">
+				Add Custom Monster/Player
+			</button>
 			{openModal && (
 				<div>
 					<div className="add-modal">

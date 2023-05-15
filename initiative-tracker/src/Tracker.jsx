@@ -13,7 +13,7 @@ export default function Tracker() {
 						<ControlPanel />
 					</>
 				) : (
-					<h3>Add some creatures to get started!</h3>
+					<h1>Add some creatures to get started!</h1>
 				)}
 			</div>
 		</div>

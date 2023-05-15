@@ -1,11 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import {
-	editCreatureHp,
-	editCreatureInitiative,
-	removeCreature,
-	sortCreatures,
-} from "./redux/actions";
+import { editCreatureHp, editCreatureInitiative, removeCreature, sortCreatures } from "./redux/actions";
 import { useSelector } from "react-redux";
 
 export default function CreatureRow({ creature, index }) {
@@ -71,10 +66,7 @@ export default function CreatureRow({ creature, index }) {
 			});
 	}
 	return (
-		<tr
-			className="creature"
-			style={{ backgroundColor: active ? "lightgrey" : "white" }}
-		>
+		<tr className="creature" style={{ backgroundColor: active ? "lightgrey" : "white" }}>
 			<td>
 				<img src={creature.img_url} alt={creature.name} />
 			</td>
@@ -112,8 +104,7 @@ export default function CreatureRow({ creature, index }) {
 					</>
 				) : (
 					<p>
-						{initiative}{" "}
-						<button onClick={() => setInitiativeActive(true)}>Edit</button>
+						{initiative} <button onClick={() => setInitiativeActive(true)}>Edit</button>
 						<button onClick={handleRoll}>Roll</button>
 					</p>
 				)}

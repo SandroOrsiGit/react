@@ -1,5 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Eagle+Lake&display=swap");
+
 body {
 	margin: 0;
+	font-family: "Eagle Lake", cursive;
+	background-image: url(greet-final-battle-alone-illustration.jpg);
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+}
+.bloodred {
+	text-shadow: 1px 1px black;
+	font-weight: bold;
+	font-size: 24px;
+	margin-left: 75px;
 }
 .flex {
 	display: flex;
@@ -10,6 +24,7 @@ body {
 .tracker {
 	display: flex;
 	justify-content: center;
+	margin-top: 25px;
 }
 
 .creature img {
@@ -23,12 +38,14 @@ th {
 	width: 150px;
 	max-width: 150px !important;
 	font-size: 20px;
+	background-color: lightgray;
 }
 td {
 	width: 150px;
 	text-align: center;
 	font-size: 20px;
 	height: 4vh;
+	background-color: lightgray;
 }
 td p {
 	margin-top: 5px;
@@ -49,6 +66,8 @@ td {
 	display: flex;
 	padding: 0px 10px;
 	margin-top: 10px;
+	background-color: lightgray;
+	margin-right: 10px;
 }
 .dropdown:hover {
 	cursor: pointer;
@@ -107,6 +126,9 @@ td {
 	right: 0;
 	height: 100vh;
 }
+.add-modal {
+	background-color: lightcoral;
+}
 .add-custom-creature img {
 	display: block;
 	max-width: 50px;
@@ -121,9 +143,11 @@ td {
 	padding: 10px;
 	border: black groove 2px;
 	width: 100px;
+	background-color: lightgray;
 }
 .button:hover {
-	background-color: lightgray;
+	background-color: #880808;
+	color: lightgray;
 	cursor: pointer;
 }
 .control {
@@ -139,4 +163,42 @@ td {
 	max-height: 25px;
 	display: block;
 	margin-left: 5px;
+}
+
+.footer {
+	position: fixed;
+	bottom: 0;
+	right: 5%;
+}
+a {
+	text-decoration: none;
+	color: crimson;
+}
+a:hover {
+	color: lightcoral;
+}
+.header {
+	background-color: #880808;
+}
+.custom-button {
+	padding: 15px;
+	border: black groove 2px;
+	background-color: lightgray;
+	border-radius: 5px;
+}
+.custom-button:hover {
+	cursor: pointer;
+	background-color: grey;
+}
+.creature button {
+	background-color: lightgray;
+	margin-left: 5px;
+}
+.creature button:hover {
+	cursor: pointer;
+	background-color: #880808;
+	color: lightgray;
+}
+table {
+	border: none;
 }
