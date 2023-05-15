@@ -2,6 +2,7 @@ import { useState } from "react";
 import DropdownMonster from "./DropdownMonster";
 
 export default function SavedCreatures() {
+	localStorage.removeItem("debug");
 	const [dropdownActive, setDropdownActive] = useState(false);
 	const creaturesInLocalStorage = { ...localStorage };
 	const keys = Object.keys(creaturesInLocalStorage);
@@ -14,10 +15,7 @@ export default function SavedCreatures() {
 			<h3>Saved Creatures</h3>
 			<div>
 				<div className="add-creature">
-					<div
-						className="dropdown"
-						onClick={() => setDropdownActive(!dropdownActive)}
-					>
+					<div className="dropdown" onClick={() => setDropdownActive(!dropdownActive)}>
 						<p>--Select Creature To Add--</p>
 						{dropdownActive ? <p>&#x25B2;</p> : <p>&#x25BC;</p>}
 					</div>

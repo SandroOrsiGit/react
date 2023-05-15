@@ -1,27 +1,23 @@
 import { useState, useEffect } from "react";
 
-export default function usePokemonList(){
-    const [pokeList, setPokeList]= useState([])
-    
-    const [loading,setLoadling]=useState(false)
-    
-    
+export default function usePokemonList() {
+	const [pokeList, setPokeList] = useState([]);
 
-    useEffect(() => {
-        
-        const loadPokemon = () => {
-            setLoadling(true)
-            fetch('https://pokeapi.co/api/v2/pokemon')
-            .then(res => res.json())
-            .then(data => {
-                setLoadling(false)
-                setPokeList(data.results)})
-        }
+	const [loading, setLoadling] = useState(false);
 
-        loadPokemon()
-        
-    }, [])
+	useEffect(() => {
+		const loadPokemon = () => {
+			setLoadling(true);
+			fetch("https://pokeapi.co/api/v2/pokemon")
+				.then((res) => res.json())
+				.then((data) => {
+					setLoadling(false);
+					setPokeList(data.results);
+				});
+		};
 
-    return [pokeList, loading]
+		loadPokemon();
+	}, []);
 
+	return [pokeList, loading];
 }

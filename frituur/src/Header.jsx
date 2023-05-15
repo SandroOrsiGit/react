@@ -10,9 +10,6 @@ export default function Header() {
 		top: "0px",
 		backgroundColor: "gray",
 	};
-	const inlineStyle = {
-		display: "inline",
-	};
 
 	return (
 		<div style={headerStyle}>

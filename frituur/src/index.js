@@ -9,6 +9,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import SnackList from "./SnackList";
+import PayOverview from "./PayOverview";
 
 const router = createBrowserRouter([
 	{
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
 			{
 				path: "about",
 				element: <About />,
+			},
+			{
+				path: "afrekenen",
+				element: <PayOverview />,
 			},
 		],
 	},

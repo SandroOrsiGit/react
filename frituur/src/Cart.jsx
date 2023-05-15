@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import Orders from "./Orders";
+import { NavLink } from "react-router-dom";
 
 export default function Cart() {
 	const modalStyle = {
@@ -32,6 +33,10 @@ export default function Cart() {
 		setShow(true);
 	}
 
+	function handlePay() {
+		setShow(false);
+	}
+
 	return (
 		<div>
 			<button onClick={openCart}>Winkelwagen ({cart.length})</button>
@@ -39,7 +44,12 @@ export default function Cart() {
 				<div>
 					<div style={modalStyle}>
 						<h1>Jouw bestelling</h1>
-						<Orders />
+						<Orders setShow={setShow} />
+						{cart.length != 0 && (
+							<NavLink to={"/afrekenen"} onClick={handlePay}>
+								<button className="bigButtonStyle">Afrekenen</button>
+							</NavLink>
+						)}
 					</div>
 					<div style={darkBackgroundStyle} onClick={() => setShow(false)}></div>
 				</div>

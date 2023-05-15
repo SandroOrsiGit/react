@@ -27,39 +27,16 @@ export default function AddCustomCreature() {
 				<h3>New Creature</h3>
 				<p>Picture (player/monster):</p>
 				<div className="picture-input">
-					<input
-						type="radio"
-						value="player"
-						name="picture"
-						onChange={() => setPicture("player")}
-					/>
+					<input type="radio" value="player" name="picture" onChange={() => setPicture("player")} />
 					<img src="player.png" alt="" />
-					<input
-						type="radio"
-						value="monster"
-						name="picture"
-						onChange={() => setPicture("monster")}
-					/>
+					<input type="radio" value="monster" name="picture" onChange={() => setPicture("monster")} />
 					<img src="monster.png" alt="" />
 				</div>
 				<p>
-					Name:{" "}
-					<input
-						type="text"
-						name="name"
-						value={name}
-						onChange={(e) => setName(e.target.value)}
-					/>
+					Name: <input type="text" name="name" value={name} onChange={(e) => setName(e.target.value)} />
 				</p>
 				<p>
-					HP:{" "}
-					<input
-						type="number"
-						min="1"
-						name="hp"
-						value={hp}
-						onChange={(e) => setHp(e.target.value)}
-					/>
+					HP: <input type="number" min="1" name="hp" value={hp} onChange={(e) => setHp(e.target.value)} />
 				</p>
 				<p>
 					Amount:
@@ -72,12 +49,7 @@ export default function AddCustomCreature() {
 					/>
 				</p>
 				<p>
-					<input
-						type="checkbox"
-						name="save"
-						onChange={(e) => setSave(e.target.checked)}
-						checked={save}
-					/>
+					<input type="checkbox" name="save" onChange={(e) => setSave(e.target.checked)} checked={save} />
 					Save this Creature
 				</p>
 				<button onClick={handleAdd}>Add</button>
